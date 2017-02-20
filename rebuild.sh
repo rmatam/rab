@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
-/etc/init.d/tomcat7 stop
+export ANT_HOME=/opt/local/ant
+
+/etc/init.d/vivo stop
 ant all -Dskiptests=true
-chown -R tomcat7:tomcat7 /var/lib/tomcat7/webapps/rab*
-chown -R tomcat7:tomcat7 /home/vagrant/rab-vitro/data-home/
-/etc/init.d/tomcat7 start
+chown -R tomcat:vivoapps /opt/local/tomcat/
+chown -R sdmccaul:vivoapps /opt/local/rab-vitro/
+chown -R tomcat:vivoapps /opt/local/vdata/
+/etc/init.d/vivo start
+
